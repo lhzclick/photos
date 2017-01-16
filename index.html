@@ -317,19 +317,19 @@
 			moveSon.eq(moveSonLen-1).clone().prependTo(move);	
 			moveSon.eq(0).clone().appendTo(move);	//克隆节点
 			moveSon.eq(0).addClass('show');			//第一个li加show
-		document.addEventListener('touchstart',function (ev) {
+		$('#tab4')[0].addEventListener('touchstart',function (ev) {
 			ev.preventDefault();				//阻止默认事件
 			pageX = ev.changedTouches[0].pageX;	//手指离屏幕左边距离
 			beginL = move.position().left;		//ul的left值
 			clearInterval(timer)				//清定时器
 		})
-		document.addEventListener('touchmove',function (ev) {
+		$('#tab4')[0].addEventListener('touchmove',function (ev) {
 			//当前手指离屏幕左边距离-手指接触到屏幕时离屏幕左边距离
 			moveL = ev.changedTouches[0].pageX-pageX;	
 			//将moveL赋给ul的left
 			move.css('left',beginL+moveL)
 		})
-		document.addEventListener('touchend',function (ev) {
+		$('#tab4')[0].addEventListener('touchend',function (ev) {
 			moveL = ev.changedTouches[0].pageX-pageX;
 			//当前手指离屏幕左边距离-手指接触到屏幕时离屏幕左边距离
 			if(onOff){		//开关控制运动，防止多次点击，不断变化
