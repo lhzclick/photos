@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			body,
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			/*第一部分*/
+			.focus {
+				width: 320px;
+				height: 150px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.focus .hd {
+				width: 100%;
+				height: 10px;
+				position: absolute;
+				z-index: 1;
+				bottom: 0;
+				text-align: center;
+			}
+			
+			.focus .hd ul {
+				overflow: hidden;
+				display: -moz-box;
+				display: -webkit-box;
+				display: box;
+				height: 10px;
+				background-color: rgba(51, 51, 51, 0.5);
+			}
+			
+			.focus .hd ul li {
+				-moz-box-flex: 1;
+				-webkit-box-flex: 1;
+				box-flex: 1;
+			}
+			
+			.focus .hd ul .on {
+				background: #fff;
+			}
+			
+			.focus .bd {
+				position: relative;
+				z-index: 0;
+			}
+			
+			.focus .bd li img {
+				width: 100%;
+				height: 150px;
+			}
+			
+			.focus .bd li a {
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				/* 取消链接高亮 */
+			}
+			
+			/*第二部分*/
+			.slideBox{ position:relative; width:320px;  height:152px; overflow:hidden; margin:10px auto; }
+	.slideBox .hd{ position:absolute; height:28px; line-height:28px; bottom:0; right:0; z-index:1; }
+	.slideBox .hd li{ display:inline-block; width:5px; height:5px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#333; text-indent:-9999px; overflow:hidden; margin:0 6px;   }
+	.slideBox .hd li.on{ background:#fff;  }
+	.slideBox .bd{ position:relative; z-index:0; }
+	.slideBox .bd li{ position:relative;  }
+	.slideBox .bd li img{ width:320px;  height:152px; display:block;   }
+	.slideBox .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */ }
+	.slideBox .bd li .tit{ display:block; width:100%;  position:absolute; bottom:0; text-indent:10px; height:28px; line-height:28px; background:url(images/focusBg.png) repeat-x; color:#fff;   }
+
+		/*第三部分*/
+		.picScroll{ margin:10px auto; text-align:center;  }
+	.picScroll .bd ul{ width:100%;  float:left; padding-top:10px;  }
+	.picScroll .bd li{ width:33%; float:left; font-size:14px; text-align:center;  }
+	.picScroll .bd li a{-webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */ }
+	.picScroll .bd li img{ width:90px; height:142px;  background:url(images/loading.gif) #fff center center no-repeat;  }
+
+
+	.picScroll .hd{ height:40px; line-height:40px; border-bottom:2px solid #80BD6D; background:#f6f6f6;   overflow:hidden; text-align:left;  padding:0 10px;  }
+	.picScroll .hd ul{ float:right; padding-top:16px;   }	
+	.picScroll .hd li{ float:left; width:8px; height:8px; background:#D0D0D0; margin:0 5px; overflow:hidden; 
+	-webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; 
+	}
+	.picScroll .hd .on{ background:#80BD6D;  }
+	.picScroll .prev,.picScroll .next{ display:block; float:right;  width:18px; height:18px; background:url(images/pisScrollIcons.gif) -6px -7px no-repeat; overflow:hidden; margin:11px 5px 0 5px;  }
+	.picScroll .next{ background-position:-34px -7px; }
+	.picScroll .prevStop{ background-position:-6px -40px; }
+	.picScroll .nextStop{ background-position:-34px -40px; }
+
+		/*第四部分*/
+			#tab4{
+				width: 16rem;
+				overflow: hidden;
+				position: relative;
+				height: 16rem;
+				background: #ccc;
+			}
+			#tab4 ul{
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				width: 80rem;
+				height: 16rem;
+				list-style: none;
+				position: absolute;
+				left: -10rem;
+				top: 0;
+			}
+			#tab4 li{
+				float: left;
+				width: 12rem;
+				height: 16rem;
+				background: blue;
+				font-size: 3rem;
+				transform: scale(.8);
+				transition: .5s;
+			}
+			#tab4 img{
+				width: 12rem;
+				height: 16rem;
+			}
+			#tab4 section{
+				width: 4rem;
+				height: .5rem;
+				position: absolute;
+				bottom: .5rem;
+				left: 6rem;
+			}
+			#tab4 section span{
+				border-radius: 50%;
+				float: left;
+				width: .5rem;
+				height: .5rem;
+				background: #000;
+				margin-left: .5rem;
+			}
+			#tab4 ul .show{
+				transform: scale(1);
+			}
+			#tab4 section .active{
+				background: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="focus" class="focus">
+			<div class="hd">
+				<ul></ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="images/1.jpg" /></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div id="slideBox" class="slideBox">
+				<div class="bd">
+					<ul>
+						<li>
+							<a class="pic" href="#"><img src="images/1.jpg" /></a>
+							<a class="tit" href="#">汤唯新片大卖请剧组吃回锅肉</a>
+						</li>
+						<li>
+							<a class="pic" href="#"><img src="images/1.jpg"/></a>
+							<a class="tit" href="#">范冰冰黄晓明亲密无间</a>
+						</li>
+						<li>
+							<a class="pic" href="#"><img src="images/1.jpg"/></a>
+							<a class="tit" href="#">一周体育快报</a>
+						</li>
+						<li>
+							<a class="pic" href="#"><img src="images/1.jpg"/></a>
+							<a class="tit" href="#">金正恩携娇妻视察</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="hd">
+					<ul></ul>
+				</div>
+			</div>
+		<div id="picScroll" class="picScroll">
+				<div class="hd">
+						<span class="next"></span>
+						<ul></ul>
+						<span class="prev"></span>
+						<!--<h3>多图滑动</h3>-->
+				</div>
+				<div class="bd">
+						<ul>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+						</ul>
+
+						<ul>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+						</ul>
+
+						<ul>
+							<li><a href="#"><img _src="images/1.jpg" /></a></li>
+							<li><a href="#"><img _src="images/1.jpg" /></a></li>
+							<li><a href="#"><img _src="images/1.jpg"  /></a></li>
+						</ul>
+				</div>
+			</div>
+			<!--第四部分-->
+			<div id="tab4">
+				<ul>
+					<li><img src="images/2.jpg" alt="" /></li>
+					<li><img src="images/3.jpg" alt="" /></li>
+					<li><img src="images/4.jpg" alt="" /></li>
+					<li><img src="images/5.jpg" alt="" /></li>
+				</ul>
+				<section>
+					<span class="active"></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</section>
+			</div>
+
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script type="text/javascript">
+			/*第一部分*/
+			TouchSlide({
+				slideCell: "#focus",
+				titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+				mainCell: ".bd ul",
+				effect: "leftLoop",
+				autoPlay: true, //自动播放
+				autoPage: true //自动分页
+			});
+			$('#focus .hd li').html('');
+			
+			/*第二部分*/
+			TouchSlide({ 
+				slideCell:"#slideBox",
+				titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+				mainCell:".bd ul", 
+				effect:"leftLoop", 
+				autoPage:true, //自动分页
+				autoPlay: true //自动播放
+			});
+			
+			/*第三部分*/
+			TouchSlide({ 
+					slideCell:"#picScroll",
+					titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+					autoPage:true, //自动分页
+					pnLoop:"false", // 前后按钮不循环
+					switchLoad:"_src", //切换加载，真实图片路径为"_src" 
+					autoPlay: true //自动播放
+				});
+			
+//			第四部分
+			$('html').css('font-size',window.screen.width/16);  //设置rem
+		
+		var move =  $('#tab4 ul'),			//ul
+			moveSon = $('li',move),		//包图片li
+			circle = $('#tab4 span'),			//小圆点
+			moveSonLen = moveSon.length,//包图片li的长度
+			pageX = 0,					//手指离屏幕左边距离初始值
+			beginL  = 0,				//ul初始left值
+			moveL = 0,		//当前手指离屏幕左边距离-手指接触到屏幕时离屏幕左边距离
+			n = 0,					//计数器
+			onOff = true,			//开关
+			timer = null;			//定时器
+			
+			moveSon.eq(moveSonLen-1).clone().prependTo(move);	
+			moveSon.eq(0).clone().appendTo(move);	//克隆节点
+			moveSon.eq(0).addClass('show');			//第一个li加show
+		document.addEventListener('touchstart',function (ev) {
+			ev.preventDefault();				//阻止默认事件
+			pageX = ev.changedTouches[0].pageX;	//手指离屏幕左边距离
+			beginL = move.position().left;		//ul的left值
+			clearInterval(timer)				//清定时器
+		})
+		document.addEventListener('touchmove',function (ev) {
+			//当前手指离屏幕左边距离-手指接触到屏幕时离屏幕左边距离
+			moveL = ev.changedTouches[0].pageX-pageX;	
+			//将moveL赋给ul的left
+			move.css('left',beginL+moveL)
+		})
+		document.addEventListener('touchend',function (ev) {
+			moveL = ev.changedTouches[0].pageX-pageX;
+			//当前手指离屏幕左边距离-手指接触到屏幕时离屏幕左边距离
+			if(onOff){		//开关控制运动，防止多次点击，不断变化
+				if(moveL<0){	//向左边滑动
+					n++;
+					onOff = false;
+					move.animate({'left':-n*12-10+'rem'},200,'linear',function(){
+						onOff = true;
+						moveSon.css('transform','scale(.8)').eq(n).css('transform','scale(1)');
+						if(n>=moveSonLen){
+							n = 0;	
+							move.css('left',-n*12-10+'rem');
+							moveSon.css('transform','scale(.8)').eq(n).css('transform','scale(1)');
+							circle.removeClass('active').eq(n).addClass('active')
+						}
+					});
+				}else if(moveL>0){//向右边滑动
+					n--;
+					onOff = false;
+					move.animate({'left':-n*12-10+'rem'},200,'linear',function(){
+						onOff = true;
+						moveSon.css('transform','scale(.8)').eq(n).css('transform','scale(1)');
+						if(n<0){
+							n = moveSonLen-1;
+							move.css('left',-n*12-10+'rem');
+							moveSon.css('transform','scale(.8)').eq(n).css('transform','scale(1)');
+							circle.removeClass('active').eq(n).addClass('active')
+						}
+					});
+				}
+			}
+			//小圆点变色
+			circle.removeClass('active').eq(n).addClass('active')
+			//重新开启定时器
+//			autoTab();
+		})
+		//开启定时器
+//		autoTab();
+		function autoTab() {
+			timer = null;
+			timer = setInterval(function () {
+				n++;
+					onOff = false;
+					move.animate({'left':-n*12-10+'rem'},200,'linear',function(){
+						onOff = true;
+						moveSon.css('transform','scale(.8)').eq(n+1).css('transform','scale(1)');
+						if(n>=moveSonLen){
+							n = 0;	
+							move.css('left',-n*12-10+'rem');
+							moveSon.css('transform','scale(.8)').eq(n+1).css('transform','scale(1)');
+							circle.removeClass('active').eq(n).addClass('active')
+						}
+					});
+					circle.removeClass('active').eq(n).addClass('active')
+			},2000)
+		}
+
+		</script>
+	</body>
+
+</html>
